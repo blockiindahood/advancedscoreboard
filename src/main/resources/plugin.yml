@@ -1,5 +1,5 @@
 name: AdvancedScoreboard
 version: @version@
 main: de.blocki.advancedscoreboard.main.Main
-depend:
+softdepend:
   - PlaceholderAPI

@@ -4,6 +4,7 @@ import de.blocki.advancedscoreboard.fb.FastBoard;
 import de.blocki.advancedscoreboard.listener.PlayerJoinLeave;
 import de.blocki.advancedscoreboard.utils.ConfigManager;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -31,15 +32,25 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
         getServer().getScheduler().runTaskTimer(this, () -> {
             for (FastBoard board : boards.values()) {
-                updateBoard(board);
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
+                    updateBoardPAPI(board);
+                }else {
+                    updateBoard(board);
+                }
             }
         }, 0, update_time * 20L);
 
     }
 
-    private void updateBoard(FastBoard board) {
+    private void updateBoardPAPI(FastBoard board) {
         board.updateLinesColection(
                 ConfigManager.getList("Scoreboard.lines").stream().map(s -> ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(board.getPlayer(), String.valueOf(s)))).collect(Collectors.toList())
+        );
+    }
+
+    private void updateBoard(FastBoard board) {
+        board.updateLinesColection(
+                ConfigManager.getList("Scoreboard.lines").stream().map(s -> ChatColor.translateAlternateColorCodes('&', String.valueOf(s))).collect(Collectors.toList())
         );
     }
 
