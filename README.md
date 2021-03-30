@@ -1,5 +1,5 @@
 # AdvancedScoreboard
-AdvancedScoreboard is a Scoreboard (Sideboard) Plugin for Minecraft Java Version 1.7.10-1.16.*. It has Support for PlaceholderAPI but does not need it to work, only if you want to use Placeholders.
+AdvancedScoreboard is a Scoreboard (Sideboard) Plugin for Minecraft Java Version 1.7.10-1.16.*. It has Support for PlaceholderAPI but does not need it to work, only if you want to use Placeholders. It uses the [FastBoard Scoreboard API](https://github.com/MrMicky-FR/FastBoard) which is a Packet based Scoreboard API to oset the Siedboard without interferring other Scoreboards.
 
 # Features
 
