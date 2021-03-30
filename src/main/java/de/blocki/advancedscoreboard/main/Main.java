@@ -57,11 +57,11 @@ public final class Main extends JavaPlugin {
     private void setDefaultConfig(){
         List<String> list = new ArrayList<>();
         list.add("&1");
-        list.add("&bProfil");
+        list.add("&bProfile");
         list.add("&f%Name%");
         list.add("&2");
-        list.add("&bRang");
-        list.add("&f%Rang%");
+        list.add("&bRank");
+        list.add("&f%Rank%");
         list.add("&3");
         list.add("&bServer");
         list.add("&f%cn_current_service_name%");
@@ -69,9 +69,9 @@ public final class Main extends JavaPlugin {
         list.add("&bCoins");
         list.add("&f%Coins%");
         list.add("&5");
-        list.add("&bWebseite");
-        list.add("&fRiseMC.eu");
-        if (ConfigManager.get("Scoreboard.Name") == null){ ConfigManager.set("Scoreboard.Name", "&3&lRiseMC.eu"); }
+        list.add("&bWebsite");
+        list.add("&fYourSITE.eu");
+        if (ConfigManager.get("Scoreboard.Name") == null){ ConfigManager.set("Scoreboard.Name", "&3&lYourSITE.eu"); }
         if (ConfigManager.getList("Scoreboard.lines") == null) { ConfigManager.set("Scoreboard.lines", list); }
         if (ConfigManager.get("Scoreboard.Update") == null){ ConfigManager.set("Scoreboard.Update", 1); }
     }
