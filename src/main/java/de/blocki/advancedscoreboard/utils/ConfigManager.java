@@ -13,15 +13,37 @@ public class ConfigManager {
     private static YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
 
 
-    public static void set(String path, Object value){
-        yamlConfiguration.set(path, value);
-        save();
+    public static void setDef(String path, Object value){
+        if(!isSet(path)){
+            yamlConfiguration.set(path, value);
+            save();
+        }
+    }
+
+    public static boolean isSet(String path){
+        return yamlConfiguration.isSet(path);
     }
 
     public static String get(String path){
         return yamlConfiguration.getString(path);
     }
     public static List<?> getList(String path){ return yamlConfiguration.getList(path); }
+    public static String getString(String path){
+        if(yamlConfiguration.isSet(path)) {
+            return yamlConfiguration.getString(path);
+        }else {
+            return "Not Found: " + path;
+        }
+    }
+    public static Object getObj(String path){
+        if(yamlConfiguration.isSet(path)) {
+            return yamlConfiguration.get(path);
+        }else {
+            return "Not Found: " + path;
+        }
+    }
+
+    public static boolean getBool(String path){ return yamlConfiguration.getBoolean(path); }
 
 
     public static void save(){

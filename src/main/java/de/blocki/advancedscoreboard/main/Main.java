@@ -23,7 +23,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         instance = this;
 
         setDefaultConfig();
@@ -33,25 +32,25 @@ public final class Main extends JavaPlugin {
         getServer().getScheduler().runTaskTimer(this, () -> {
             for (FastBoard board : boards.values()) {
                 if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                    updateBoardPAPI(board);
+                    updateBoard(board, true);
                 }else {
-                    updateBoard(board);
+                    updateBoard(board, false);
                 }
             }
         }, 0, update_time * 20L);
 
     }
 
-    private void updateBoardPAPI(FastBoard board) {
-        board.updateLinesColection(
-                ConfigManager.getList("Scoreboard.lines").stream().map(s -> ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(board.getPlayer(), String.valueOf(s)))).collect(Collectors.toList())
-        );
-    }
-
-    private void updateBoard(FastBoard board) {
-        board.updateLinesColection(
-                ConfigManager.getList("Scoreboard.lines").stream().map(s -> ChatColor.translateAlternateColorCodes('&', String.valueOf(s))).collect(Collectors.toList())
-        );
+    private void updateBoard(FastBoard board, boolean isPAPI){
+        if(isPAPI){
+            board.updateLinesColection(
+                    ConfigManager.getList("Scoreboard.lines").stream().map(s -> ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(board.getPlayer(), String.valueOf(s)))).collect(Collectors.toList())
+            );
+        }else {
+            board.updateLinesColection(
+                    ConfigManager.getList("Scoreboard.lines").stream().map(s -> ChatColor.translateAlternateColorCodes('&', String.valueOf(s))).collect(Collectors.toList())
+            );
+        }
     }
 
     private void setDefaultConfig(){
@@ -67,12 +66,12 @@ public final class Main extends JavaPlugin {
         list.add("&f%cn_current_service_name%");
         list.add("&4");
         list.add("&bCoins");
-        list.add("&f%vault_eco_balance_formatted% ");
+        list.add("&f%vault_eco_balance_formatted%");
         list.add("&5");
         list.add("&bWebsite");
         list.add("&fYourSITE.eu");
-        if (ConfigManager.get("Scoreboard.Name") == null){ ConfigManager.set("Scoreboard.Name", "&3&lYourSITE.eu"); }
-        if (ConfigManager.getList("Scoreboard.lines") == null) { ConfigManager.set("Scoreboard.lines", list); }
-        if (ConfigManager.get("Scoreboard.Update") == null){ ConfigManager.set("Scoreboard.Update", 1); }
+        ConfigManager.setDef("Scoreboard.Name", "&3&lYourSITE.eu");
+        ConfigManager.setDef("Scoreboard.lines", list);
+        ConfigManager.setDef("Scoreboard.Update", 1);
     }
 }
