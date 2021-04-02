@@ -32,7 +32,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
         getServer().getScheduler().runTaskTimer(this, () -> {
             for (FastBoard board : boards.values()) {
-                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI").isEnabled()) {
+                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
                     updateBoardPAPI(board);
                 }else {
                     updateBoard(board);
