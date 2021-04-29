@@ -17,7 +17,7 @@ public class PlayerJoinLeave implements Listener {
 
         FastBoard board = new FastBoard(player);
 
-        board.updateTitle(ConfigManager.get("Scoreboard.Name").replace("&", "§"));
+        board.updateTitle(Main.fbScoreboard.getTitle().replace("&", "§"));
 
         Main.boards.put(player.getUniqueId(), board);
     }
