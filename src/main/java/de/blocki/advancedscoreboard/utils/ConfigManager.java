@@ -1,6 +1,6 @@
 package de.blocki.advancedscoreboard.utils;
 
-import de.blocki.advancedscoreboard.main.Main;
+import de.blocki.advancedscoreboard.main.AdvancedScoreboard;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ConfigManager {
 
-    private static File file = new File(Main.instance.getDataFolder(), "config.yml");
+    private static File file = new File(AdvancedScoreboard.instance.getDataFolder(), "config.yml");
     private static YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
 
 

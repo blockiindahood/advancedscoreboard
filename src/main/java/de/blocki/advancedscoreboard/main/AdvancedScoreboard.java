@@ -1,5 +1,6 @@
 package de.blocki.advancedscoreboard.main;
 
+import de.blocki.advancedscoreboard.api.AdvancedScoreboardAPI;
 import de.blocki.advancedscoreboard.fb.FBScoreboard;
 import de.blocki.advancedscoreboard.fb.FastBoard;
 import de.blocki.advancedscoreboard.listener.PlayerJoinLeave;
@@ -7,18 +8,19 @@ import de.blocki.advancedscoreboard.utils.ConfigManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public final class Main extends JavaPlugin {
+public final class AdvancedScoreboard extends JavaPlugin {
 
     public static final Map<UUID, FastBoard> boards = new HashMap<>();
 
     public static Plugin instance;
+
+    private static AdvancedScoreboardAPI api;
 
     public static FBScoreboard fbScoreboard;
 
@@ -26,6 +28,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
         setDefaultConfig();
+        api = new AdvancedScoreboardAPI();
 
         fbScoreboard = new FBScoreboard();
         fbScoreboard.setLines(ConfigManager.getList("scoreboard.lines"));
@@ -33,6 +36,7 @@ public final class Main extends JavaPlugin {
         fbScoreboard.setUpdateTime(Integer.parseInt(ConfigManager.get("scoreboard.update_time")));
 
         getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
+
 
         getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
             for (FastBoard board : boards.values()) {
@@ -42,11 +46,12 @@ public final class Main extends JavaPlugin {
                     } else {
                         updateBoard(board, false);
                     }
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
             }
         }, 0, fbScoreboard.getUpdateTime() * 20L);
+
 
     }
 
@@ -82,5 +87,9 @@ public final class Main extends JavaPlugin {
         ConfigManager.setDef("scoreboard.title", "&3&lYourSITE.eu");
         ConfigManager.setDef("scoreboard.lines", list);
         ConfigManager.setDef("scoreboard.update_time", 1);
+    }
+
+    public static AdvancedScoreboardAPI getAPI() {
+        return (api != null) ? api : new AdvancedScoreboardAPI();
     }
 }
