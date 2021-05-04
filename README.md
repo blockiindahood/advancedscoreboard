@@ -1,5 +1,5 @@
 # AdvancedScoreboard
-AdvancedScoreboard is a Scoreboard (Sideboard) Plugin for Minecraft Java Version 1.7.10-1.16.*. It has Support for PlaceholderAPI but does not need it to work, only if you want to use Placeholders. It uses the [FastBoard Scoreboard API](https://github.com/MrMicky-FR/FastBoard) which is a Packet based Scoreboard API to set the Sideboard without interferring other Scoreboards.
+AdvancedScoreboard is a Scoreboard (Sideboard) Plugin for Minecraft Java Version 1.7.10-1.16.*. It has Support for PlaceholderAPI but does not need it to work, only if you want to use Placeholders. It uses the [FastBoard Scoreboard API](https://github.com/MrMicky-FR/FastBoard) which is a packet based Scoreboard API to set the Sideboard without interferring other Scoreboards.
 
 # Features
 
@@ -7,19 +7,19 @@ AdvancedScoreboard is a Scoreboard (Sideboard) Plugin for Minecraft Java Version
   - Set refresh rate
   - Config support
 
-It's powered by the (PlaceholderAPI v2.10.9) and Spigot API
+It's powered by the (PlaceholderAPI v2.10.9) and Spigot API.
 
 ### Installation
 
 AdvancedScoreboard requires [Spigot](https://www.spigotmc.org/), ([PlaceholderAPI](https://luckperms.net) is not nessecarry) with a Minecraft Server to run.
 
-Download the Latest Version of the Plugin [here](https://github.com/blockiyt/advancedscoreboard/releases) and put it into your Plugins folder in your Minecraft Server.
+Download the latest Version of the Plugin [here](https://github.com/blockiyt/advancedscoreboard/releases) and put it into your Plugins folder in your Minecraft Server.
 
 Restart or Reload the Server an you are done!
 
 ### Todos
 
- - Cache scoreboard lines
+- nothing
 
 
 License
