@@ -7,6 +7,7 @@ import de.blocki.advancedscoreboard.utils.ConfigManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -32,12 +33,17 @@ public final class Main extends JavaPlugin {
         fbScoreboard.setUpdateTime(Integer.parseInt(ConfigManager.get("scoreboard.update_time")));
 
         getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
-        getServer().getScheduler().runTaskTimer(this, () -> {
+
+        getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
             for (FastBoard board : boards.values()) {
-                if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                    updateBoard(board, true);
-                }else {
-                    updateBoard(board, false);
+                try {
+                    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                        updateBoard(board, true);
+                    } else {
+                        updateBoard(board, false);
+                    }
+                }catch (NullPointerException e){
+                    e.printStackTrace();
                 }
             }
         }, 0, fbScoreboard.getUpdateTime() * 20L);
