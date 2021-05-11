@@ -31,10 +31,10 @@ Restart or Reload the Server an you are done!
 ```
 ```xml
 <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
 </repositories>
 ```
 
