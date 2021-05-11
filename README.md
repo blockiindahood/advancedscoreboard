@@ -17,6 +17,40 @@ Download the latest Version of the Plugin [here](https://github.com/blockiyt/adv
 
 Restart or Reload the Server an you are done!
 
+## API
+
+### Maven
+```xml
+<dependencies>
+    <dependency>
+	    <groupId>com.github.blockiyt</groupId>
+	    <artifactId>advancedscoreboard</artifactId>
+	    <version>Tag</version>
+	</dependency>
+</dependencies>
+```
+```xml
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+</repositories>
+```
+
+### Gradle
+
+```groovy
+repositories {
+   maven { url 'https://jitpack.io' }
+}
+```
+```groovy
+dependencies {
+    implementation 'com.github.blockiyt:advancedscoreboard:Tag'
+}
+```
+
 ### Todos
 
 - nothing
