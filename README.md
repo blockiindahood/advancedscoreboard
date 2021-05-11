@@ -22,7 +22,7 @@ Restart or Reload the Server an you are done!
 ### Maven
 ```xml
 <dependencies>
-    <dependency>
+	<dependency>
 	    <groupId>com.github.blockiyt</groupId>
 	    <artifactId>advancedscoreboard</artifactId>
 	    <version>Tag</version>
