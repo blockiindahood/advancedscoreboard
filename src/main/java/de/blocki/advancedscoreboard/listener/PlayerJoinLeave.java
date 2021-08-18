@@ -34,20 +34,21 @@ public class PlayerJoinLeave implements Listener {
             AdvancedScoreboard.boards.put(player.getUniqueId(), board);
 
         }
-
-
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
+        //gets Player from event
         Player player = event.getPlayer();
 
+        //gets FB from list
         FastBoard board = AdvancedScoreboard.boards.remove(player.getUniqueId());
 
         //call the FBScoreboardRemoveEvent
         FBScoreboardRemoveEvent e = new FBScoreboardRemoveEvent(player, board);
         Bukkit.getServer().getPluginManager().callEvent(e);
 
+        //if the board is not null and the event not cancelled, it is getting deleted
         if (board != null && !e.isCancelled()) {
             board.delete();
         }

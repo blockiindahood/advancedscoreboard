@@ -1,12 +1,7 @@
 package de.blocki.advancedscoreboard.fb;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 
-@Getter
-@Setter
 public class FBScoreboard {
 
     private List<?> lines;
@@ -19,4 +14,27 @@ public class FBScoreboard {
         updateTime = 0;
     }
 
+    public Integer getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Integer updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public List<?> getLines() {
+        return lines;
+    }
+
+    public void setLines(List<?> lines) {
+        this.lines = lines;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

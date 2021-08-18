@@ -17,11 +17,8 @@ import java.util.stream.Collectors;
 public final class AdvancedScoreboard extends JavaPlugin {
 
     public static final Map<UUID, FastBoard> boards = new HashMap<>();
-
     public static Plugin instance;
-
     private static AdvancedScoreboardAPI api;
-
     public static FBScoreboard fbScoreboard;
 
     @Override
@@ -41,11 +38,7 @@ public final class AdvancedScoreboard extends JavaPlugin {
         getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
             for (FastBoard board : boards.values()) {
                 try {
-                    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                        updateBoard(board, true);
-                    } else {
-                        updateBoard(board, false);
-                    }
+                    updateBoard(board, Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null);
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
@@ -57,13 +50,9 @@ public final class AdvancedScoreboard extends JavaPlugin {
 
     private void updateBoard(FastBoard board, boolean isPAPI){
         if(isPAPI){
-            board.updateLinesColection(
-                    fbScoreboard.getLines().stream().map(s -> ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(board.getPlayer(), String.valueOf(s)))).collect(Collectors.toList())
-            );
+            board.updateLines(fbScoreboard.getLines().stream().map(s -> ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(board.getPlayer(), String.valueOf(s)))).collect(Collectors.toList()));
         }else {
-            board.updateLinesColection(
-                    fbScoreboard.getLines().stream().map(s -> ChatColor.translateAlternateColorCodes('&', String.valueOf(s))).collect(Collectors.toList())
-            );
+            board.updateLines(fbScoreboard.getLines().stream().map(s -> ChatColor.translateAlternateColorCodes('&', String.valueOf(s))).collect(Collectors.toList()));
         }
     }
 

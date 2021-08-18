@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'de.blocki'
-version = '1.0.5'
+version = '1.0.7'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -26,10 +26,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
-    compileOnly 'me.clip:placeholderapi:2.10.9'
-    compileOnly 'org.projectlombok:lombok:1.18.20'
-    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
+    compileOnly 'me.clip:placeholderapi:2.10.10'
 }
 
 processResources {
