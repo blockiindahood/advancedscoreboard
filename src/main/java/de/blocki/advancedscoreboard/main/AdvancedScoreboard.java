@@ -1,6 +1,7 @@
 package de.blocki.advancedscoreboard.main;
 
 import de.blocki.advancedscoreboard.api.AdvancedScoreboardAPI;
+import de.blocki.advancedscoreboard.api.events.FBScoreboardSetEvent;
 import de.blocki.advancedscoreboard.fb.FBScoreboard;
 import de.blocki.advancedscoreboard.fb.FastBoard;
 import de.blocki.advancedscoreboard.listener.PlayerJoinLeave;
@@ -33,6 +34,17 @@ public final class AdvancedScoreboard extends JavaPlugin {
         fbScoreboard.setUpdateTime(Integer.parseInt(ConfigManager.get("scoreboard.update_time")));
 
         getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
+
+        getServer().getOnlinePlayers().forEach(player -> {
+            //creates new FastBoard
+            FastBoard board = new FastBoard(player);
+
+            //set the config title
+            board.updateTitle(AdvancedScoreboard.fbScoreboard.getTitle().replace("&", "§"));
+
+            //sets the board in main cache
+            AdvancedScoreboard.boards.put(player.getUniqueId(), board);
+        });
 
 
         getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
