@@ -1,7 +1,7 @@
 package de.blocki.advancedscoreboard.api;
 
 import de.blocki.advancedscoreboard.fb.FastBoard;
-import de.blocki.advancedscoreboard.main.AdvancedScoreboard;
+import de.blocki.advancedscoreboard.AdvancedScoreboard;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
@@ -30,7 +30,7 @@ public class AdvancedScoreboardAPI {
         FastBoard board = new FastBoard(player);
 
         //set the config title
-        board.updateTitle(AdvancedScoreboard.fbScoreboard.getTitle().replace("&", "§"));
+        board.updateTitle(AdvancedScoreboard.fbScoreboard.getTitle());
 
         //sets the board in main cache
         AdvancedScoreboard.boards.put(player.getUniqueId(), board);

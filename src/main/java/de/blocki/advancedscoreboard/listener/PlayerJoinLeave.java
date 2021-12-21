@@ -3,7 +3,7 @@ package de.blocki.advancedscoreboard.listener;
 import de.blocki.advancedscoreboard.api.events.FBScoreboardRemoveEvent;
 import de.blocki.advancedscoreboard.api.events.FBScoreboardSetEvent;
 import de.blocki.advancedscoreboard.fb.FastBoard;
-import de.blocki.advancedscoreboard.main.AdvancedScoreboard;
+import de.blocki.advancedscoreboard.AdvancedScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +28,7 @@ public class PlayerJoinLeave implements Listener {
         if(!e.isCancelled()) {
 
             //set the config title
-            board.updateTitle(AdvancedScoreboard.fbScoreboard.getTitle().replace("&", "§"));
+            board.updateTitle(AdvancedScoreboard.fbScoreboard.getTitle());
 
             //sets the board in main cache
             AdvancedScoreboard.boards.put(player.getUniqueId(), board);

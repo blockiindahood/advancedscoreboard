@@ -18,23 +18,26 @@ public class FBScoreboard {
         return updateTime;
     }
 
-    public void setUpdateTime(Integer updateTime) {
+    public FBScoreboard setUpdateTime(Integer updateTime) {
         this.updateTime = updateTime;
+        return this;
     }
 
     public List<?> getLines() {
         return lines;
     }
 
-    public void setLines(List<?> lines) {
+    public FBScoreboard setLines(List<?> lines) {
         this.lines = lines;
+        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public FBScoreboard setTitle(String title) {
         this.title = title;
+        return this;
     }
 }
